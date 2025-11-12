@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: myproduct
+    restart: always
+    ports:
+      - "3001:3000"     # Cổng ngoài VPS : Cổng trong container
+    environment:
+      - NODE_ENV=production
+    networks:
+      - myproduct_network
+
+networks:
+  myproduct_network:
+    driver: bridge
